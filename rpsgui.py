@@ -1,10 +1,19 @@
 from tkinter import *
 import random
+import sys
+import os
+
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
 
 # приделать сохранению и лидерборд
 choice = int()
 computer_choice = 0
 rules = {0:1, 1:2, 2:0}
+
+
 
 #Фунцкии
 def choose_rock():
@@ -113,10 +122,10 @@ computertext = Label(text="Выбор\nкомпьютера: ")
 computertext.grid(column = 0, row=0, padx=10, pady=10)
 
 #Для картинок
-rock_image = PhotoImage(file=r"Pics\paper1.png")
-paper_image = PhotoImage(file=r"Pics\paper1.png")
-scissors_image = PhotoImage(file=r"Pics\scissor1.png")
-nothing_image = PhotoImage(file=r"Pics\question1.png")
+rock_image = PhotoImage(file=resource_path("Pics/paper1.png"))
+paper_image = PhotoImage(file=resource_path("Pics/paper1.png"))
+scissors_image = PhotoImage(file=resource_path("Pics/scissor1.png"))
+nothing_image = PhotoImage(file=resource_path("Pics/question1.png"))
 cpic = Canvas(width=105, height=105)
 cpic.grid(column=1,row=0)
 cpic.create_image(0, 0, image=nothing_image, anchor= NW)
